@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 420" width="100%" height="auto">
+<rect width="750" height="420" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+<text x="70" y="36" font-family="sans-serif" font-size="18" font-weight="bold" fill="#1E293B">Quantum Computing: Amplitude Estimation Quadratic Speedup</text>
+<text x="70" y="52" font-family="sans-serif" font-size="12" fill="#64748B">Query Evaluations vs. Precision (epsilon): O(1/eps) vs Classical O(1/eps^2)</text>
+<line x1="70.0" y1="60" x2="70.0" y2="360" stroke="#E2E8F0" stroke-dasharray="4"/>
+<text x="70.0" y="378" font-family="sans-serif" font-size="11" text-anchor="middle" fill="#64748B">0.050</text>
+<line x1="496.66666666666674" y1="60" x2="496.66666666666674" y2="360" stroke="#E2E8F0" stroke-dasharray="4"/>
+<text x="496.66666666666674" y="378" font-family="sans-serif" font-size="11" text-anchor="middle" fill="#64748B">0.020</text>
+<line x1="638.8888888888889" y1="60" x2="638.8888888888889" y2="360" stroke="#E2E8F0" stroke-dasharray="4"/>
+<text x="638.8888888888889" y="378" font-family="sans-serif" font-size="11" text-anchor="middle" fill="#64748B">0.010</text>
+<line x1="710.0000000000001" y1="60" x2="710.0000000000001" y2="360" stroke="#E2E8F0" stroke-dasharray="4"/>
+<text x="710.0000000000001" y="378" font-family="sans-serif" font-size="11" text-anchor="middle" fill="#64748B">0.005</text>
+<path d="M 70.0 230.1 L 88.8 228.2 L 107.6 226.3 L 126.5 224.3 L 145.3 222.2 L 164.1 220.1 L 182.9 217.9 L 201.8 215.7 L 220.6 213.3 L 239.4 210.9 L 258.2 208.4 L 277.1 205.9 L 295.9 203.2 L 314.7 200.4 L 333.5 197.5 L 352.4 194.5 L 371.2 191.3 L 390.0 188.0 L 408.8 184.5 L 427.6 180.9 L 446.5 177.0 L 465.3 172.9 L 484.1 168.6 L 502.9 164.0 L 521.8 159.1 L 540.6 153.8 L 559.4 148.0 L 578.2 141.8 L 597.1 134.9 L 615.9 127.3 L 634.7 118.8 L 653.5 109.1 L 672.4 97.9 L 691.2 84.5 L 710.0 67.9" fill="none" stroke="#FB7185" stroke-width="3"/>
+<path d="M 70.0 335.6 L 88.8 334.6 L 107.6 333.7 L 126.5 332.7 L 145.3 331.7 L 164.1 330.6 L 182.9 329.5 L 201.8 328.4 L 220.6 327.2 L 239.4 326.0 L 258.2 324.8 L 277.1 323.5 L 295.9 322.1 L 314.7 320.7 L 333.5 319.3 L 352.4 317.8 L 371.2 316.2 L 390.0 314.5 L 408.8 312.8 L 427.6 311.0 L 446.5 309.0 L 465.3 307.0 L 484.1 304.8 L 502.9 302.5 L 521.8 300.1 L 540.6 297.4 L 559.4 294.6 L 578.2 291.4 L 597.1 288.0 L 615.9 284.2 L 634.7 279.9 L 653.5 275.1 L 672.4 269.5 L 691.2 262.8 L 710.0 254.5" fill="none" stroke="#10B981" stroke-width="3"/>
+<text x="698.0" y="59.94108178421931" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="end" fill="#BE123C">Classical Monte Carlo: 40,000 queries</text>
+<text x="698.0" y="246.5110814326502" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="end" fill="#047857">Quantum Amplitude Est.: 200 queries (200x speedup)</text>
+</svg>
