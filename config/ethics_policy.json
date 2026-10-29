@@ -1,0 +1,19 @@
+{
+    "fair_lending_standards": {
+        "regulatory_framework": "Equal Credit Opportunity Act (ECOA) / Consumer Financial Protection Bureau (CFPB)",
+        "disparate_impact_ratio_min": 0.8,
+        "demographic_parity_diff_max": 0.1,
+        "equal_opportunity_diff_max": 0.08
+    },
+    "protected_attributes": [
+        "gender_proxy",
+        "age_proxy",
+        "zip_code_tier",
+        "marital_status_proxy"
+    ],
+    "explainability_mandate": {
+        "adverse_action_notice_required": true,
+        "top_adverse_factors_count": 4,
+        "counterfactual_guidance_enabled": true
+    }
+}

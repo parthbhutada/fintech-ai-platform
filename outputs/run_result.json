@@ -1,0 +1,42 @@
+{
+  "dataset": "dataset/lending_club_10k.csv",
+  "records_used": 10000,
+  "selected_model": "Regularized_Logistic_Regression_L2",
+  "model_metrics": {
+    "accuracy": 0.8184,
+    "precision": 0.8,
+    "recall": 0.0259,
+    "f1_score": 0.0502,
+    "roc_auc": 0.6942
+  },
+  "application_id": "68407277",
+  "decision": {
+    "application_id": "68407277",
+    "decision": "MANUAL_REVIEW",
+    "requested_amount": 3600.0,
+    "approved_amount": 2880.0,
+    "assigned_grade": "D",
+    "assigned_subgrade": "D2",
+    "offered_interest_rate_pct": 20.49,
+    "default_probability": 0.2774,
+    "credit_score": 679.0,
+    "debt_to_income_pct": 5.91,
+    "available_monthly_capacity_usd": 1699.96,
+    "adverse_action_reasons": [],
+    "is_straight_through_eligible": false
+  },
+  "fraud_check": {
+    "applicant_id": "68407277",
+    "fraud_score": 0.0,
+    "fraud_risk_tier": "LOW",
+    "recommended_action": "STANDARD_PROCESSING",
+    "multivariate_anomaly_distance": 0.66,
+    "detected_anomalies": [],
+    "is_flagged": false
+  },
+  "audit_receipt": {
+    "block_index": 1,
+    "block_hash": "0680fec21259ce6d3e87f4ea370e9f2ce9d4eb8e08d9c769d42393cecd89eb69",
+    "merkle_root": "4764c73312aefd2bab1ef71422ae348cc5442f777c3f79be3a99f1a79bbd056b"
+  }
+}
