@@ -9,13 +9,11 @@ from src.automation.orchestrator import FinTechSTPOrchestrator
 from src.core.data_loader import DataLoader
 
 def main():
-    print("=" * 75)
     print("NEXUSFIN AI: END-TO-END STRAIGHT-THROUGH UNDERWRITING DEMO")
-    print("=" * 75)
     orchestrator = FinTechSTPOrchestrator()
-    orchestrator.bootstrap_models("dataset/lending_club_sample.csv")
+    orchestrator.bootstrap_models("dataset/lending_club_10k.csv")
 
-    loader = DataLoader("dataset/lending_club_snippet.csv")
+    loader = DataLoader("dataset/lending_club_10k.csv")
     sample_borrower = loader.raw_records[0]
 
     print(f"\nEvaluating Applicant ID: {sample_borrower.get('id')}")
@@ -26,7 +24,7 @@ def main():
 
     res = orchestrator.process_application_stp(sample_borrower)
 
-    print("\n" + "-" * 40 + " STP DECISION ENGINE OUTPUT " + "-" * 40)
+    print("\nSTP DECISION ENGINE OUTPUT")
     print(f"1. Biometric Match:       {res['biometric_verification']['status_message']} ({res['biometric_verification']['biometric_confidence_pct']}%)")
     print(f"2. Cognitive NLP:         {res['cognitive_nlp_analysis']['intent_classification']} (Sentiment: {res['cognitive_nlp_analysis']['cognitive_sentiment_score']:+.2f})")
     print(f"3. Fraud Screening:       Tier: {res['fraud_detection_result']['fraud_risk_tier']} (Score: {res['fraud_detection_result']['fraud_score']}/100)")
@@ -41,7 +39,6 @@ def main():
         print(f"   - Actionable Guidance: {cf['action']} -> {cf['impact']}")
     print(f"6. Blockchain Audit:      Block #{res['blockchain_audit_receipt']['block_index']} Hash: {res['blockchain_audit_receipt']['block_hash'][:28]}...")
     print(f"7. STP Processing Time:   {res['straight_through_processing_latency_ms']} ms")
-    print("=" * 75)
 
 if __name__ == "__main__":
     main()

@@ -34,4 +34,4 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
     CMD curl -f http://localhost:5050/health || exit 1
 
 # Default command launches straight-through CLI demo or web API
-CMD ["python3", "src/cli.py", "pipeline", "--dataset", "dataset/lending_club_sample.csv"]
+CMD ["python3", "main.py"]

@@ -20,7 +20,7 @@ class TestCore(unittest.TestCase):
         self.assertEqual(clean_emp_length(""), 0.0)
 
     def test_data_loader(self):
-        loader = DataLoader("dataset/lending_club_snippet.csv")
+        loader = DataLoader("dataset/lending_club_10k.csv", max_records=5)
         self.assertEqual(len(loader.raw_records), 5)
         X, y, f_names = loader.get_features_and_labels()
         self.assertEqual(len(X), 5)

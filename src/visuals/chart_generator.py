@@ -287,7 +287,7 @@ def generate_quantum_speedup_svg(output_path):
         out.write("\n".join(lines))
 
 def build_all_charts():
-    dataset_path = 'dataset/lending_club_sample.csv'
+    dataset_path = 'dataset/accepted_2007_to_2018Q4.csv'
     records = []
     with open(dataset_path, 'r', encoding='utf-8') as f:
         reader = csv.DictReader(f)

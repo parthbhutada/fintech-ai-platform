@@ -8,19 +8,17 @@ and Blockchain ledger commitment into a unified Straight-Through Processing pipe
 import time
 from typing import Dict, List, Any, Optional
 
-from src.core.data_loader import DataLoader
-from src.security_privacy.privacy_guard import SecurityAccessController, DifferentialPrivacyEngine
-from src.biometrics.biometric_auth import BiometricAuthenticationEngine
-from src.cognitive_ai.nlp_underwriter import CognitiveNLPUnderwriter
-from src.fraud_prevention.anomaly_detector import FraudAnomalyDetector
-from src.credit_scoring.automl import AutoMLCreditScorer
-from src.credit_scoring.underwriting import UnderwritingEngine
-from src.explainability.xai_engine import ExplainableAIEngine
-from src.ethics_fairness.bias_auditor import BiasAuditor
+from src.analysis import (
+    BiasAuditor,
+    BiometricAuthenticationEngine,
+    CognitiveNLPUnderwriter,
+    ExplainableAIEngine,
+    FraudAnomalyDetector,
+)
+from src.data_credit import AutoMLCreditScorer, DataLoader, UnderwritingEngine
+from src.finance import PersonalizedBankingAdvisor, PortfolioRiskManager, QuantumRiskSimulator
 from src.blockchain.audit_ledger import BlockchainAuditLedger
-from src.personalized_banking.recommendations import PersonalizedBankingAdvisor
-from src.risk_management.portfolio_risk import PortfolioRiskManager
-from src.quantum_sim.quantum_risk import QuantumRiskSimulator
+from src.security_privacy.privacy_guard import DifferentialPrivacyEngine, SecurityAccessController
 
 class FinTechSTPOrchestrator:
     def __init__(self):

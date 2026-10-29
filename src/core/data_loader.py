@@ -8,9 +8,13 @@ import math
 from typing import List, Dict, Any, Tuple, Optional
 from src.core.schema import FEATURE_COLUMNS, TARGET_COLUMN, DEFAULT_STATUSES, clean_float, clean_emp_length
 
+DEFAULT_DATASET = "dataset/lending_club_10k.csv"
+DEFAULT_MAX_RECORDS = 10000
+
 class DataLoader:
-    def __init__(self, filepath: Optional[str] = None):
+    def __init__(self, filepath: Optional[str] = None, max_records: Optional[int] = DEFAULT_MAX_RECORDS):
         self.filepath = filepath
+        self.max_records = max_records
         self.raw_records: List[Dict[str, str]] = []
         self.feature_names: List[str] = FEATURE_COLUMNS.copy()
         self.stats: Dict[str, Dict[str, float]] = {}
@@ -22,8 +26,10 @@ class DataLoader:
         records = []
         with open(filepath, "r", encoding="utf-8", errors="replace") as f:
             reader = csv.DictReader(f)
-            for row in reader:
+            for row_number, row in enumerate(reader):
                 records.append(dict(row))
+                if self.max_records is not None and row_number + 1 >= self.max_records:
+                    break
         self.raw_records = records
         self._compute_feature_stats()
         return self.raw_records

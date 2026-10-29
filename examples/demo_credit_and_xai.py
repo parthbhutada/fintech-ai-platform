@@ -12,7 +12,7 @@ def main():
     print("=" * 75)
     print("DEMO: AUTOML CREDIT SCORING & EXPLAINABLE AI (XAI)")
     print("=" * 75)
-    loader = DataLoader("dataset/lending_club_sample.csv")
+    loader = DataLoader("dataset/lending_club_10k.csv")
     X_train, X_val, y_train, y_val = loader.train_test_split(test_size=0.25, seed=42)
 
     scorer = AutoMLCreditScorer()

@@ -12,7 +12,7 @@ def main():
     print("=" * 75)
     print("DEMO: TRUST & ETHICS IN AI (FAIR LENDING AUDIT)")
     print("=" * 75)
-    loader = DataLoader("dataset/lending_club_sample.csv")
+    loader = DataLoader("dataset/lending_club_10k.csv")
     underwriter = UnderwritingEngine()
 
     decisions = [underwriter.evaluate_application(r)['decision'] for r in loader.raw_records]

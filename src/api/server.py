@@ -10,7 +10,7 @@ import sys
 from typing import Dict, Any
 
 from src.automation.orchestrator import FinTechSTPOrchestrator
-from src.core.data_loader import DataLoader
+from src.core.data_loader import DEFAULT_DATASET, DataLoader
 from src.risk_management.portfolio_risk import PortfolioRiskManager
 from src.trading_portfolio.portfolio_allocator import PortfolioAllocator
 from src.quantum_sim.quantum_risk import QuantumRiskSimulator
@@ -18,7 +18,7 @@ from src.quantum_sim.quantum_risk import QuantumRiskSimulator
 orchestrator = FinTechSTPOrchestrator()
 # Initialize models
 try:
-    orchestrator.bootstrap_models("dataset/lending_club_sample.csv")
+    orchestrator.bootstrap_models(DEFAULT_DATASET)
 except Exception as e:
     print(f"Model bootstrapping note: {e}")
 
@@ -145,7 +145,7 @@ class FinTechAPIHandler(http.server.BaseHTTPRequestHandler):
             return
 
         if path == "/api/v1/risk":
-            loader = DataLoader("dataset/lending_club_sample.csv")
+            loader = DataLoader(DEFAULT_DATASET)
             risk_mgr = PortfolioRiskManager()
             res = risk_mgr.analyze_portfolio(loader.raw_records)
             self._send_json(200, res)

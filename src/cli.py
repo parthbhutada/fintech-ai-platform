@@ -12,24 +12,16 @@ import os
 # Add project root to path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from src.core.data_loader import DataLoader
-from src.credit_scoring.underwriting import UnderwritingEngine
-from src.explainability.xai_engine import ExplainableAIEngine
-from src.ethics_fairness.bias_auditor import BiasAuditor
-from src.fraud_prevention.anomaly_detector import FraudAnomalyDetector
-from src.risk_management.portfolio_risk import PortfolioRiskManager
-from src.trading_portfolio.portfolio_allocator import PortfolioAllocator
-from src.quantum_sim.quantum_risk import QuantumRiskSimulator
-from src.blockchain.audit_ledger import BlockchainAuditLedger
-from src.automation.orchestrator import FinTechSTPOrchestrator
+from src.analysis import BiasAuditor, ExplainableAIEngine, FraudAnomalyDetector
+from src.data_credit import DEFAULT_DATASET, DataLoader, UnderwritingEngine
+from src.finance import PortfolioAllocator, PortfolioRiskManager, QuantumRiskSimulator
+from src.operations import BlockchainAuditLedger, FinTechSTPOrchestrator
 from src.api.server import run_server
 
 def cmd_pipeline(args):
-    print("=" * 70)
     print("NexusFin AI: Straight-Through Processing (STP) Execution")
-    print("=" * 70)
     orchestrator = FinTechSTPOrchestrator()
-    dataset_path = args.dataset or "dataset/lending_club_sample.csv"
+    dataset_path = args.dataset or DEFAULT_DATASET
     print(f"[*] Bootstrapping machine learning models using: {dataset_path}")
     train_res = orchestrator.bootstrap_models(dataset_path)
     b_name = train_res["best_model_name"]
@@ -78,13 +70,10 @@ def cmd_pipeline(args):
     print(f"[6] Blockchain Proof-of-Authority Audit Receipt:")
     print(f"    Block #{blk_idx} Hash: {blk_hash[:24]}...")
     print(f"\n[+] Total Straight-Through Processing Latency: {latency} ms")
-    print("=" * 70)
 
 def cmd_audit(args):
-    print("=" * 70)
     print("NexusFin AI: Trust & Ethics Fair Lending Audit")
-    print("=" * 70)
-    dataset_path = args.dataset or "dataset/lending_club_sample.csv"
+    dataset_path = args.dataset or DEFAULT_DATASET
     loader = DataLoader(dataset_path)
     underwriter = UnderwritingEngine()
 
@@ -112,13 +101,10 @@ def cmd_audit(args):
     print(f"Four-Fifths (80%) Passed:  {ff_pass}")
     print(f"Demographic Parity Passed: {dp_pass}")
     print(f"Regulatory Assessment:     {summary}")
-    print("=" * 70)
 
 def cmd_risk(args):
-    print("=" * 70)
     print("NexusFin AI: Portfolio Credit Risk Management & Stress Testing")
-    print("=" * 70)
-    dataset_path = args.dataset or "dataset/lending_club_sample.csv"
+    dataset_path = args.dataset or DEFAULT_DATASET
     loader = DataLoader(dataset_path)
     risk_mgr = PortfolioRiskManager()
     res = risk_mgr.analyze_portfolio(loader.raw_records)
@@ -145,12 +131,9 @@ def cmd_risk(args):
         s_status = sc["capital_adequacy_status"]
         print(f"  [{s_name}]")
         print(f"    Loss: ${s_loss:,.2f} ({s_rate}%) | Status: {s_status}")
-    print("=" * 70)
 
 def cmd_portfolio(args):
-    print("=" * 70)
     print("NexusFin AI: Modern Portfolio Theory (Markowitz) Loan Optimization")
-    print("=" * 70)
     allocator = PortfolioAllocator()
     res = allocator.optimize_allocation()
 
@@ -175,12 +158,9 @@ def cmd_portfolio(args):
     es = eq['sharpe_ratio']
     er = eq['expected_return_pct']
     print(f"  - Equal-Weighted Portfolio Sharpe: {es:.3f} (Return: {er}%)")
-    print("=" * 70)
 
 def cmd_quantum(args):
-    print("=" * 70)
     print("NexusFin AI: Quantum Computing in Finance Simulation")
-    print("=" * 70)
     sim = QuantumRiskSimulator(n_qubits=8, shots=2048)
     res = sim.simulate_quantum_var(portfolio_exposure=1000000.0, base_loss_rate=0.08)
 
@@ -205,12 +185,9 @@ def cmd_quantum(args):
     algo = pqc["pqc_migration_roadmap"]["nist_standardized_algorithms"][0]
     print("\nPost-Quantum Cryptography Assessment:")
     print(f"  Lattice Algorithms: {algo}")
-    print("=" * 70)
 
 def cmd_blockchain(args):
-    print("=" * 70)
     print("NexusFin AI: Proof-of-Authority Blockchain Audit Ledger")
-    print("=" * 70)
     ledger = BlockchainAuditLedger(difficulty=2)
     print("[*] Created Genesis Block.")
     print("[*] Recording credit transactions...")
@@ -225,7 +202,6 @@ def cmd_blockchain(args):
     valid = integrity["valid"]
     tot = integrity["total_blocks_verified"]
     print(f"[+] Chain Cryptographic Integrity: {valid} ({tot} blocks verified)")
-    print("=" * 70)
 
 def main():
     parser = argparse.ArgumentParser(description="NexusFin AI - FinTech Banking Intelligence Platform")
@@ -233,15 +209,15 @@ def main():
 
     # Pipeline
     p_pipe = subparsers.add_parser("pipeline", help="Run straight-through processing pipeline")
-    p_pipe.add_argument("--dataset", type=str, default="dataset/lending_club_sample.csv")
+    p_pipe.add_argument("--dataset", type=str, default=DEFAULT_DATASET)
 
     # Audit
     p_audit = subparsers.add_parser("audit", help="Run trust & ethics fair lending audit")
-    p_audit.add_argument("--dataset", type=str, default="dataset/lending_club_sample.csv")
+    p_audit.add_argument("--dataset", type=str, default=DEFAULT_DATASET)
 
     # Risk
     p_risk = subparsers.add_parser("risk", help="Run portfolio risk and stress test")
-    p_risk.add_argument("--dataset", type=str, default="dataset/lending_club_sample.csv")
+    p_risk.add_argument("--dataset", type=str, default=DEFAULT_DATASET)
 
     # Portfolio
     subparsers.add_parser("portfolio", help="Run Markowitz portfolio optimization")

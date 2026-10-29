@@ -1,6 +1,6 @@
 # NexusFin AI - REST API & Library Reference
 
-The platform provides a low-latency HTTP REST API and a modular Python SDK.
+The application provides a small HTTP API and reusable Python modules.
 
 ---
 
@@ -16,7 +16,7 @@ Returns system operational state and registered modules.
 {
   "status": "healthy",
   "version": "1.0.0",
-  "modules": ["AutoML", "XAI", "Ethics", "Fraud", "Risk", "Portfolio", "Quantum", "Blockchain", "Wireless"]
+  "modules": ["credit", "analysis", "risk", "workflow"]
 }
 ```
 
@@ -96,7 +96,7 @@ Returns simulated Quantum Amplitude Estimation (QAE) Value-at-Risk results and c
 from src.automation.orchestrator import FinTechSTPOrchestrator
 
 orchestrator = FinTechSTPOrchestrator()
-orchestrator.bootstrap_models("dataset/lending_club_sample.csv")
+orchestrator.bootstrap_models("dataset/accepted_2007_to_2018Q4.csv")
 
 applicant = {
     "id": "LOAN_401",

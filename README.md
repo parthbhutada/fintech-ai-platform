@@ -1,4 +1,4 @@
-# NexusFin AI: Enterprise FinTech Banking & Finance Intelligence Platform
+# FinTech AI Lending Application
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
@@ -14,7 +14,7 @@
 
 ## Executive Summary
 
-**NexusFin AI** is a modular, production-grade FinTech software application that integrates Artificial Intelligence into retail banking and credit risk management. Built with a zero-external-dependency core architecture that runs out of the box in any Python 3.8+ environment, the platform links Straight-Through Processing (STP), automated credit underwriting, Explainable AI (XAI), fair lending ethics auditing, biometric verification, fraud prevention, quantum computing simulations, and Proof-of-Authority blockchain smart contracts.
+This is a small FinTech application for CA-2. It uses AI-style credit scoring and simple rule checks to review LendingClub loan records. The application also demonstrates fraud checks, fairness measurement, risk summaries, and a traceable processing workflow.
 
 ---
 
@@ -32,17 +32,20 @@ fintech-ai-platform/
 │   ├── app_config.json                 # System thresholds, underwriting rules, risk parameters
 │   └── ethics_policy.json              # Fair lending standards (EEOC 80% disparate impact rule)
 │
-├── dataset/                            # Dataset Repository
-│   ├── lending_club_snippet.csv        # The original snippet provided in assignment
-│   └── lending_club_sample.csv         # Augmented realistic LendingClub benchmark dataset
+├── dataset/                            # LendingClub data
+│   └── accepted_2007_to_2018Q4.csv      # Main dataset used by the application
 │
 ├── docs/                               # Formal Documentation & Deliverables
 │   ├── REPORT.md                       # Complete 5-Section Academic Reference Guide & Report
 │   ├── ARCHITECTURE.md                 # System architecture diagrams & technical flow
 │   └── API_REFERENCE.md                # REST API and Python Library documentation
 │
-├── src/                                # Core Application Package
+├── src/                                # Application code
 │   ├── __init__.py
+│   ├── data_credit.py                  # Data loading and credit decisions
+│   ├── analysis.py                     # Fraud, text, fairness, and identity checks
+│   ├── finance.py                      # Portfolio and risk calculations
+│   ├── operations.py                   # Security, audit, and workflow tools
 │   ├── core/                           # Data loading, schema validation, normalization
 │   │   ├── __init__.py
 │   │   ├── data_loader.py
@@ -149,23 +152,30 @@ fintech-ai-platform/
 
 ## Quickstart Guide
 
-### 1. Verification & Automated Tests
-Execute the entire test suite across all 13 modules:
+### 1. Main End-to-End Run
+The main file performs the complete sequence: load the accepted dataset, train and select a model, process one application, and save the final result.
+```bash
+python3 main.py
+```
+The result is written to `outputs/run_result.json`. Use `--max-records` to control the training sample size.
+
+### 2. Verification & Automated Tests
+Run the complete test suite:
 ```bash
 python3 tests/run_all_tests.py
 ```
 *Expected Result: 18 tests run, 0 failures, 0 errors.*
 
-### 2. Command Line Interface (CLI)
+### 3. Command Line Interface (CLI)
 ```bash
-# Execute straight-through underwriting
-python3 src/cli.py pipeline --dataset dataset/lending_club_sample.csv
+# Run the end-to-end lending workflow on the main dataset
+python3 src/cli.py pipeline
 
 # Run regulatory fair lending audit
-python3 src/cli.py audit --dataset dataset/lending_club_sample.csv
+python3 src/cli.py audit
 
 # Calculate portfolio credit risk & macroeconomic stress tests
-python3 src/cli.py risk --dataset dataset/lending_club_sample.csv
+python3 src/cli.py risk
 
 # Optimize loan portfolio allocation (Markowitz Efficient Frontier)
 python3 src/cli.py portfolio
@@ -177,7 +187,7 @@ python3 src/cli.py quantum
 python3 src/cli.py blockchain
 ```
 
-### 3. Interactive Web Dashboard & REST API
+### 4. Interactive Web Dashboard & REST API
 Start the platform server on port 5050:
 ```bash
 python3 src/cli.py serve --port 5050

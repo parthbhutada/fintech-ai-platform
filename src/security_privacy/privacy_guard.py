@@ -34,7 +34,7 @@ class DifferentialPrivacyEngine:
         true_mean = sum(clipped) / n
         sensitivity = (upper_bound - lower_bound) / n
         scale = sensitivity / self.epsilon
-        noise = self.laplace_noise(scale)
+        noise = max(-5.0, min(5.0, self.laplace_noise(scale)))
         return round(true_mean + noise, 4)
 
     def private_count(self, count_val: int) -> int:
